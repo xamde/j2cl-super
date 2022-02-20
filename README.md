@@ -67,3 +67,101 @@ Maybe these remarks from the j2cl-m-p can be generalized for public use
 - `server-app` -- a plain old server app using math-lib and log-api
 - `client-app` -- a j2cl app using math-lib
 
+### Status
+
+```
+mvn clean install -pl log-api
+mvn clean install -pl log-impl-j2cl
+mvn clean install -pl math-lib
+```
+all run fine.
+```
+cd client-app
+mvn clean j2cl:build
+```
+fails with
+```
+...
+[INFO] Starting com.google.jsinterop:jsinterop-annotations:2.0.0/stripped_bytecode_headers
+[INFO] Starting de.xam.example.log:log-api:0.1.0-SNAPSHOT/stripped_bytecode_headers
+[INFO] Starting com.google.elemental2:elemental2-core:1.1.0/stripped_sources
+[INFO] Finished com.google.elemental2:elemental2-core:1.1.0/stripped_sources in 170ms
+[INFO] Starting de.xam.example.math:math-lib:0.1.0-SNAPSHOT/stripped_bytecode
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/stripped_bytecode: /C:/_data_/_p_/_git/GitHub/j2cl-super/client-app/target/gwt3BuildCache/0.19-SNAPSHOT/de.xam.example.math-math-lib-0.1.0-SNAPSHOT/026f68a0c11cd044707d943b8dd286d4-stripped_sources/results
+/org/example/math/MathUtil.java:3 package org.example.log does not exist
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/stripped_bytecode: /C:/_data_/_p_/_git/GitHub/j2cl-super/client-app/target/gwt3BuildCache/0.19-SNAPSHOT/de.xam.example.math-math-lib-0.1.0-SNAPSHOT/026f68a0c11cd044707d943b8dd286d4-stripped_sources/results
+/org/example/math/MathUtil.java:4 package org.example.log does not exist
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/stripped_bytecode: /C:/_data_/_p_/_git/GitHub/j2cl-super/client-app/target/gwt3BuildCache/0.19-SNAPSHOT/de.xam.example.math-math-lib-0.1.0-SNAPSHOT/026f68a0c11cd044707d943b8dd286d4-stripped_sources/results
+/org/example/math/MathUtil.java:8 cannot find symbol
+  symbol:   class Log
+  location: class org.example.math.MathUtil
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/stripped_bytecode: /C:/_data_/_p_/_git/GitHub/j2cl-super/client-app/target/gwt3BuildCache/0.19-SNAPSHOT/de.xam.example.math-math-lib-0.1.0-SNAPSHOT/026f68a0c11cd044707d943b8dd286d4-stripped_sources/results
+/org/example/math/MathUtil.java:8 cannot find symbol
+  symbol:   class LogImpl
+  location: class org.example.math.MathUtil
+[INFO] Finished de.xam.example.math:math-lib:0.1.0-SNAPSHOT/stripped_bytecode in 805ms
+[INFO] Starting de.xam.example.math:math-lib:0.1.0-SNAPSHOT/transpiled_js
+[INFO] Finished com.vertispan.jsinterop:base:1.0.0-SNAPSHOT/stripped_bytecode in 1912ms
+[INFO] Starting de.xam.example.math:math-lib:0.1.0-SNAPSHOT/stripped_bytecode_headers
+[INFO] Starting com.vertispan.jsinterop:base:1.0.0-SNAPSHOT/stripped_bytecode_headers
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/transpiled_js: Error:C:\_data_\_p_\_git\GitHub\j2cl-super\client-app\target\gwt3BuildCache\0.19-SNAPSHOT\de.xam.example.math-math-lib-0.1.0-SNAPSHOT\026f68a0c11cd044707d943b8dd286d4-stripped_sources\result
+s\org\example\math\MathUtil.java:3: The import org.example.log cannot be resolved
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/transpiled_js: Error:C:\_data_\_p_\_git\GitHub\j2cl-super\client-app\target\gwt3BuildCache\0.19-SNAPSHOT\de.xam.example.math-math-lib-0.1.0-SNAPSHOT\026f68a0c11cd044707d943b8dd286d4-stripped_sources\result
+s\org\example\math\MathUtil.java:4: The import org.example.log cannot be resolved
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/transpiled_js: Error:C:\_data_\_p_\_git\GitHub\j2cl-super\client-app\target\gwt3BuildCache\0.19-SNAPSHOT\de.xam.example.math-math-lib-0.1.0-SNAPSHOT\026f68a0c11cd044707d943b8dd286d4-stripped_sources\result
+s\org\example\math\MathUtil.java:8: Log cannot be resolved to a type
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/transpiled_js: Error:C:\_data_\_p_\_git\GitHub\j2cl-super\client-app\target\gwt3BuildCache\0.19-SNAPSHOT\de.xam.example.math-math-lib-0.1.0-SNAPSHOT\026f68a0c11cd044707d943b8dd286d4-stripped_sources\result
+s\org\example\math\MathUtil.java:8: LogImpl cannot be resolved to a type
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/transpiled_js: Error:C:\_data_\_p_\_git\GitHub\j2cl-super\client-app\target\gwt3BuildCache\0.19-SNAPSHOT\de.xam.example.math-math-lib-0.1.0-SNAPSHOT\026f68a0c11cd044707d943b8dd286d4-stripped_sources\result
+s\org\example\math\MathUtil.java:18: Log cannot be resolved to a type
+[ERROR] de.xam.example.math:math-lib:0.1.0-SNAPSHOT/transpiled_js: Error:C:\_data_\_p_\_git\GitHub\j2cl-super\client-app\target\gwt3BuildCache\0.19-SNAPSHOT\de.xam.example.math-math-lib-0.1.0-SNAPSHOT\026f68a0c11cd044707d943b8dd286d4-stripped_sources\result
+s\org\example\math\MathUtil.java:20: Log cannot be resolved to a type
+[ERROR] Exception executing task de.xam.example.math:math-lib:0.1.0-SNAPSHOT/transpiled_js
+java.lang.IllegalStateException: Error while running J2CL
+    at com.vertispan.j2cl.build.provided.J2clTask.lambda$resolve$7 (J2clTask.java:83)
+    at com.vertispan.j2cl.build.TaskScheduler$2.executeTask (TaskScheduler.java:172)
+    at com.vertispan.j2cl.build.TaskScheduler$2.lambda$onReady$0 (TaskScheduler.java:211)
+    at java.util.concurrent.Executors$RunnableAdapter.call (Executors.java:539)
+    at java.util.concurrent.FutureTask.run (FutureTask.java:264)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run (ScheduledThreadPoolExecutor.java:304)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1136)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:635)
+    at java.lang.Thread.run (Thread.java:833)
+[INFO] Finished com.vertispan.jsinterop:base:1.0.0-SNAPSHOT/stripped_bytecode_headers in 25ms
+java.lang.RuntimeException
+        at com.vertispan.j2cl.build.DiskCache.markFailed(DiskCache.java:452)
+        at com.vertispan.j2cl.build.DiskCache$CacheResult.markFailure(DiskCache.java:54)
+        at com.vertispan.j2cl.build.TaskScheduler$2.executeTask(TaskScheduler.java:181)
+        at com.vertispan.j2cl.build.TaskScheduler$2.lambda$onReady$0(TaskScheduler.java:211)
+[INFO] ------------------------------------------------------------------------
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+[INFO] BUILD FAILURE    at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+
+[INFO] ------------------------------------------------------------------------ at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+[INFO] Total time:  12.276 s
+[INFO] Finished at: 2022-02-20T21:48:07+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.vertispan.j2cl:j2cl-maven-plugin:0.19-SNAPSHOT:build (default-cli) on project client-app: Build failed, check log for failures -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[INFO] Starting com.google.elemental2:elemental2-promise:1.1.0/stripped_bytecode
+[INFO] Starting com.google.elemental2:elemental2-promise:1.1.0/transpiled_js
+[ERROR] Exception executing task com.vertispan.jsinterop:base:1.0.0-SNAPSHOT/transpiled_js
+java.lang.NoClassDefFoundError: org/eclipse/jdt/internal/compiler/lookup/ReductionResult$1
+    at org.eclipse.jdt.internal.compiler.lookup.InferenceContext18.inferInvocationApplicability (InferenceContext18.java:376)
+    at org.eclipse.jdt.internal.compiler.lookup.ParameterizedGenericMethodBinding.computeCompatibleMethod18 (ParameterizedGenericMethodBinding.java:248)
+    at org.eclipse.jdt.internal.compiler.lookup.ParameterizedGenericMethodBinding.computeCompatibleMethod (ParameterizedGenericMethodBinding.java:92)
+    at org.eclipse.jdt.internal.compiler.lookup.Scope.computeCompatibleMethod (Scope.java:841)
+    at org.eclipse.jdt.internal.compiler.lookup.Scope.computeCompatibleMethod (Scope.java:798)
+    at org.eclipse.jdt.internal.compiler.lookup.Scope.findMethod0 (Scope.java:1756)
+```
+
+So compiling math-lib failed due to log classes not found? Weird.
