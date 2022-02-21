@@ -27,6 +27,12 @@
             <groupId>de.xam.example.math</groupId>
             <artifactId>math-lib</artifactId>
             <version>0.1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>de.xam.example.log</groupId>
+                    <artifactId>log-impl-j2cl</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>de.xam.example.log</groupId>
