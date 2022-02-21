@@ -10,7 +10,7 @@ public class LogImpl implements Log {
      * Logs to stdout with a timestamp.
      */
     public void log(String s) {
-        System.out.println(getTime() + " " + s);
+        System.out.println(getTime() + " " + s+" (javac)");
     }
 
 }

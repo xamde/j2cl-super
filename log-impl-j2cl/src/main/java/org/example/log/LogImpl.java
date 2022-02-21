@@ -16,7 +16,7 @@ public class LogImpl implements Log {
      * Logs to stdout with a timestamp.
      */
     public void log(String s) { // Maintain same public api.
-        String msg = getTime() + " " + s;
+        String msg = getTime() + " " + s+" (js)";
         new Console().log(msg);
     }
 
