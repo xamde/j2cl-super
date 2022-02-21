@@ -13,6 +13,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <j2cl.maven.version>0.19-SNAPSHOT</j2cl.maven.version>
+        <j2cl.version>0.8-SNAPSHOT</j2cl.version>
     </properties>
 
     <licenses>
@@ -26,7 +28,7 @@
     <dependencies>
         <dependency>
             <groupId>de.xam.example.log</groupId>
-            <artifactId>log-api</artifactId>
+            <artifactId>log-impl-j2cl</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
@@ -55,6 +57,24 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.vertispan.j2cl</groupId>
+                <artifactId>j2cl-maven-plugin</artifactId>
+                <version>${j2cl.maven.version}</version>
+                <executions>
+                    <execution>
+                        <id>build-js</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <webappDirectory>${project.build.directory}/gwt/launcherDir</webappDirectory>
+                    <compilationLevel>ADVANCED</compilationLevel>
+                </configuration>
             </plugin>
         </plugins>
     </build>
