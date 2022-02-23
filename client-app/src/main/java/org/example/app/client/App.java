@@ -8,7 +8,7 @@ public class App {
 
     private static final Log log = new LogImpl();
 
-    public static void main(String[] args) {
+    public void onModuleLoad() {
         int c = MathUtil.divide(9,3);
         log.log("Result is "+c);
     }
