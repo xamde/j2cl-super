@@ -1,8 +1,7 @@
 package org.example.log;
 
 // importing elemental, not available on server-side
-
-import elemental2.dom.Console;
+import elemental2.dom.DomGlobal;
 
 import java.util.Date;
 
@@ -17,7 +16,7 @@ public class LogImpl implements Log {
      */
     public void log(String s) { // Maintain same public api.
         String msg = getTime() + " " + s+" (js)";
-        new Console().log(msg);
+        DomGlobal.console.log(msg);
     }
 
 }

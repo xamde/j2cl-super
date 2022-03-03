@@ -31,6 +31,11 @@
             <artifactId>log-impl-j2cl</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>de.xam.j2cl</groupId>
+            <artifactId>slf4j2cl</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,5 +83,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>github-slf4j2cl</id>
+            <url>https://maven.pkg.github.com/xamde/slf4j2cl</url>
+        </repository>
+    </repositories>
+
+
 
 </project>
