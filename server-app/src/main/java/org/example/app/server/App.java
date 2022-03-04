@@ -1,16 +1,16 @@
 package org.example.app.server;
 
-import org.example.log.Log;
-import org.example.log.LogImpl;
-import org.example.math.*;
+import org.example.math.MathUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class App {
 
-    private static final Log log = new LogImpl();
+    private static final Logger log = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
         int c = MathUtil.divide(9,3);
-        log.log("Result is "+c);
+        log.info("Result is "+c);
     }
 
 }

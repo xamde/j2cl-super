@@ -17,8 +17,6 @@
     </licenses>
 
     <modules>
-        <module>log-api</module>
-        <module>log-impl-j2cl</module>
         <module>math-lib</module>
         <module>server-app</module>
         <module>client-app</module>

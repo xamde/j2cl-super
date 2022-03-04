@@ -57,9 +57,10 @@
     </build>
 
     <dependencies>
+        <!-- already transitively included, but added again because client-app also wants to log -->
         <dependency>
-            <groupId>de.xam.example.log</groupId>
-            <artifactId>log-impl-j2cl</artifactId>
+            <groupId>de.xam.j2cl</groupId>
+            <artifactId>slf4j2cl</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

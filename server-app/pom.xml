@@ -27,17 +27,20 @@
             <groupId>de.xam.example.math</groupId>
             <artifactId>math-lib</artifactId>
             <version>0.1.0-SNAPSHOT</version>
+
             <exclusions>
                 <exclusion>
-                    <groupId>de.xam.example.log</groupId>
-                    <artifactId>log-impl-j2cl</artifactId>
+                    <!-- we want the real deal on JVM, not this j2cl replacement -->
+                    <groupId>de.xam.j2cl</groupId>
+                    <artifactId>slf4j2cl</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>de.xam.example.log</groupId>
-            <artifactId>log-api</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <!-- to show j2cl an slf4j api & impl for the client side -->
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version>
         </dependency>
     </dependencies>
 
